@@ -52,6 +52,10 @@ class Vector2D {
         this.x = length * Math.cos(heading);
         this.y = length * Math.sin(heading);
     }
+
+    array() {
+        return [this.x, this.y];
+    }
 }
 
 function SVectorFromPolarC(heading, magnitude) {
