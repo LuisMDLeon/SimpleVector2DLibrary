@@ -1,12 +1,11 @@
 class Vector2D {
-    constructor(x, y, ox = 0, oy = 0) {
+    constructor(x = 0, y = 0) {
         this.x = x;
         this.y = y;
-        this.ox = ox;
-        this.oy = oy;
     }
 
     heading() {
+        if (this.x == 0 && this.y == 0) return 0;
         const p1 = this.y - this.oy;
         const p2 = this.x - this.ox;
         const m = p1 / p2;
@@ -15,6 +14,7 @@ class Vector2D {
     }
 
     magnitude() {
+        if (this.x == 0 && this.y == 0) return 0;
         return Math.sqrt((this.x * this.x) + (this.y * this.y));
     }
 
