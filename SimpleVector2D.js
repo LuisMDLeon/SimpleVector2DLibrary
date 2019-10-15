@@ -74,3 +74,9 @@ function SVectorRandom(min_mag, max_mag) {
 
     return new Vector2D(x, y);
 }
+
+function distance(point1, point2) {
+    const x_dif = point2[0] - point1[0];
+    const y_dif = point2[1] - point1[1];
+    return Math.sqrt((x_dif * x_dif) + (y_dif * x_dif));
+}
