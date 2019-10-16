@@ -6,8 +6,8 @@ class Vector2D {
 
     heading() {
         if (this.x == 0 && this.y == 0) return 0;
-        const p1 = this.y - this.oy;
-        const p2 = this.x - this.ox;
+        const p1 = this.y;
+        const p2 = this.x;
         const m = p1 / p2;
         const angle = Math.atan(m);
         return angle;
@@ -51,6 +51,18 @@ class Vector2D {
 
         this.x = length * Math.cos(heading);
         this.y = length * Math.sin(heading);
+    }
+
+    setAngle(angle) {
+        const magnitude = this.magnitude();
+        this.x = magnitude * Math.cos(angle);
+        this.y = magnitude * Math.sin(angle);
+    }
+
+    rotate(angle) {
+        const heading = this.heading() + angle;
+        heading = heading % (Math.PI * 2);
+        this.setAngle(heading);
     }
 
     array() {
