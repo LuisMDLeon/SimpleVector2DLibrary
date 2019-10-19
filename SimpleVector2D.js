@@ -5,11 +5,7 @@ class Vector2D {
     }
 
     heading() {
-        if (this.x == 0 && this.y == 0) return 0;
-        const p1 = this.y;
-        const p2 = this.x;
-        const m = p1 / p2;
-        const angle = Math.atan(m);
+        const angle = Math.atan2(this.y, this.x);
         return angle;
     }
 
@@ -31,19 +27,14 @@ class Vector2D {
         this.y += y;
     }
 
-    add(vector) {
-        this.x += vector.x;
-        this.y += vector.y;
-    }
-
     substract(x, y) {
         this.x -= x;
         this.y -= y;
     }
 
-    substract(vector) {
-        this.x -= vector.x;
-        this.y -= vector.y;
+    multiply(n) {
+        this.x *= n;
+        this.y *= n;
     }
 
     setMagnitude(length) {
@@ -53,6 +44,11 @@ class Vector2D {
         this.y = length * Math.sin(heading);
     }
 
+    limit(length) {
+        let magnitude = this.magnitude();
+        if (magnitude > length) this.setMagnitude(length);
+    }
+
     setAngle(angle) {
         const magnitude = this.magnitude();
         this.x = magnitude * Math.cos(angle);
@@ -60,9 +56,13 @@ class Vector2D {
     }
 
     rotate(angle) {
-        const heading = this.heading() + angle;
+        let heading = this.heading() + angle;
         heading = heading % (Math.PI * 2);
         this.setAngle(heading);
+    }
+
+    copy() {
+        return new Vector2D(this.x, this.y);
     }
 
     array() {
