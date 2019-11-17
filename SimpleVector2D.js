@@ -23,13 +23,23 @@ class Vector2D {
     }
 
     add(x, y) {
-        this.x += x;
-        this.y += y;
+        if (x instanceof Vector2D) {
+            this.x += x.x;
+            this.y += x.y;
+        } else {
+            this.x += x;
+            this.y += y;
+        }
     }
 
     substract(x, y) {
-        this.x -= x;
-        this.y -= y;
+        if (x instanceof Vector2D) {
+            this.x -= x.x;
+            this.y -= x.y;
+        } else {
+            this.x -= x;
+            this.y -= y;
+        }
     }
 
     multiply(n) {
