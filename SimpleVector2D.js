@@ -15,11 +15,13 @@ class Vector2D {
     }
 
     rotate(angle) {
-        const magnitude = this.magnitude();
         const new_heading = this.heading() + angle;
 
-        this.x = magnitude * Math.cos(new_heading);
-        this.y = magnitude * Math.sin(new_heading);
+        const sn = Math.sin(new_heading);
+        const cn = Math.cos(new_heading);
+
+        this.x = this.x * cn - this.y * sn;
+        this.y = this.x * sn + this.y * cn;
     }
 
     add(x, y) {
